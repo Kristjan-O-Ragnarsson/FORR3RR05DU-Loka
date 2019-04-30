@@ -4,7 +4,7 @@
 
 ## Time
 
-|lang(B/S)    | time  |
+|lang         | time  |
 |-------------|:-----:|
 |Python       |  N/A  |
 |C++          |  N/A  |
