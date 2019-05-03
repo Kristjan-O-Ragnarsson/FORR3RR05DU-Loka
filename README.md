@@ -1,14 +1,16 @@
 # Git-algo-loka
+
+## Idea & Expliation
+Make segment tree in three langs for later use  
+Is this enougth???????  
+
 ## Author/´s
 [Kristján O. Ragnarsson](https://github.com/Kristjan-O-Ragnarsson)
 
 ## Time
 
-|lang(B/S)    | time  |
+|lang         | time  |
 |-------------|:-----:|
-|Python Big   |  N/A  |
-|Python Small |  N/A  |
-|C++ Big      |  N/A  |
-|C++ Small    |  N/A  |
-|Java Big     |  N/A  |
-|Java Small   |  N/A  |
+|Python       |  N/A  |
+|C++          |  N/A  |
+|Java         |  N/A  |
