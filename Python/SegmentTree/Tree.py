@@ -55,4 +55,23 @@ class Tree(object):
             self.build(_ind * 2 + 1, _mid + 1, _r)
             self._list[_ind] = self._list[_ind * 2] + self._list[_ind * 2 + 1]
 
+    def update(self, _ind, _l, _r, idx, _val):
+        """
+
+        :param _ind:
+        :param _l:
+        :param _r:
+        :param idx:
+        :param _val:
+        :return:
+        """
+
+        if _l == _r:
+            self._list[_ind] = _val
+        else:
+            _mid = (_l+_r) / 2
+            self.build(_ind * 2, _l, _mid)
+            self.build(_ind * 2 + 1, _mid + 1, _r)
+            self._list[_ind] = self._list[_ind * 2] + self._list[_ind * 2 + 1]
+
 

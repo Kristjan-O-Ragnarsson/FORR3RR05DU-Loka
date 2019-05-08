@@ -15,3 +15,4 @@ if __name__ == '__main__':
     tree = SegmentTree.Tree(xl)
     print(tree.get_list)
     print repr(tree)
+    tree.update()
