@@ -2,7 +2,8 @@
 Made By Kristjan O. Ragnarsson
 github.com/Kristjan-O-Ragnarsson
 """
-
+import math
+import sys
 
 class Tree(object):
     """
@@ -68,10 +69,27 @@ class Tree(object):
 
         if _l == _r:
             self._list[_ind] = _val
+            self._g_list = _val
         else:
             _mid = (_l+_r) / 2
-            self.build(_ind * 2, _l, _mid)
-            self.build(_ind * 2 + 1, _mid + 1, _r)
+            if _ind >= _l and _ind <= _r:
+                self.updata(_ind * 2, _l, _mid, _ind, _val)
+            else:
+                self.build(_ind * 2 + 1, _mid + 1, _r, _ind, _val)
             self._list[_ind] = self._list[_ind * 2] + self._list[_ind * 2 + 1]
+
+    def query(self, _ind, _l, _r, _a, _b):
+        if _r < _a or _l > _b:
+            return -math.inf
+        if l >= a and r <= b:
+            return self._list[_ind]
+        mid = (_l+_r)/2
+        query1 = self.query(_ind * 2, _l, mid, _a, _b)
+        query2 = self.query(_ind * 2 + 1 , mid + 1, _r, _a, _b)
+        return query1 + query2 # Change this for diffren query
+
+if __name__ == "__main__":
+    x = list(map(int, sys.stdin.readline().strip('\n').split(' ')))
+
 
 
