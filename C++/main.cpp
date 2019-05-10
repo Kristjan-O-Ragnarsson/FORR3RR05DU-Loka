@@ -1,12 +1,19 @@
 #include <iostream>
 #include "LightSegmentTree.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 
 int main() {
-    std::cout << "Test" << std::endl;
-    int x[4] = {1,2,3,4};
-    //cout << sizeof(x) << endl;
-    LightSegmentTree l = LightSegmentTree(x, 4);
+    int n, k;
+    cin >> n >> k;
+    int x[n];
+    memset(x, 0, sizeof(x));
+    for (int i = 0; i < n; i++){
+        cout << x[i] << endl;
+    }
+    cout << endl;
+    LightSegmentTree l = LightSegmentTree(x, n);
+
     return 0;
 }

@@ -12,7 +12,7 @@ public:
     LightSegmentTree(int X[], int len);
     ~LightSegmentTree();
     void build(int value, int l, int r);
-    void query(int ind, int l, int r, int a, int b);
+    int query(int ind, int l, int r, int a, int b);
     void update(int ind, int l, int r, int idx, int val);
 
 private:
