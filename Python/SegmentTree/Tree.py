@@ -73,13 +73,13 @@ class Tree(object):
 
         if _l == _r:
             self._list[_ind] = _val
-            self._g_list = _val
+            self._g_list[idx] = _val
         else:
             _mid = (_l+_r) / 2
             if idx >= _l and idx <= _r:
                 self.update(_ind * 2, _l, _mid, idx, _val)
             else:
-                self.update(_ind * 2 + 1, _mid + 1, _r, _ind, _val)
+                self.update(_ind * 2 + 1, _mid + 1, _r, idx, _val)
             self._list[_ind] = self._list[_ind * 2] + self._list[_ind * 2 + 1]
 
     def query(self, _ind, _l, _r, _a, _b):
