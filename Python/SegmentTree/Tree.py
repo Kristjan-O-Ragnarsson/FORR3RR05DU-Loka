@@ -39,6 +39,10 @@ class Tree(object):
     def get_list(self):
         return self._list[1:]
 
+    @property
+    def get_original_list(self):
+        return self._g_list
+
     def build(self, _ind, _l, _r):
         """
         Build function for Segment tree
@@ -59,12 +63,12 @@ class Tree(object):
     def update(self, _ind, _l, _r, idx, _val):
         """
 
-        :param _ind:
-        :param _l:
-        :param _r:
-        :param idx:
-        :param _val:
-        :return:
+        :param _ind: Index for _list
+        :param _l: Left
+        :param _r: Right
+        :param idx: index for for selecting child
+        :param _val: Ralue
+        :return: None
         """
 
         if _l == _r:
@@ -72,16 +76,16 @@ class Tree(object):
             self._g_list = _val
         else:
             _mid = (_l+_r) / 2
-            if _ind >= _l and _ind <= _r:
-                self.updata(_ind * 2, _l, _mid, _ind, _val)
+            if idx >= _l and idx <= _r:
+                self.update(_ind * 2, _l, _mid, idx, _val)
             else:
-                self.build(_ind * 2 + 1, _mid + 1, _r, _ind, _val)
+                self.update(_ind * 2 + 1, _mid + 1, _r, _ind, _val)
             self._list[_ind] = self._list[_ind * 2] + self._list[_ind * 2 + 1]
 
     def query(self, _ind, _l, _r, _a, _b):
         if _r < _a or _l > _b:
-            return -math.inf
-        if l >= a and r <= b:
+            return 0
+        if _l >= _a and _r <= _b:
             return self._list[_ind]
         mid = (_l+_r)/2
         query1 = self.query(_ind * 2, _l, mid, _a, _b)
@@ -90,6 +94,17 @@ class Tree(object):
 
 if __name__ == "__main__":
     x = list(map(int, sys.stdin.readline().strip('\n').split(' ')))
-
+    n = x[0]
+    k = int(x[1])
+    y = [0] * x[0]
+    t = Tree(y)
+    for i in range(k):
+        cmd = list(map(str, sys.stdin.readline().strip('\n').split(' ')))
+        if cmd[0] == 'F':
+            print t.get_original_list[int(cmd[1]) - 1]
+            t.update(1, 0, n - 1, int(cmd[1]), not t.get_original_list[int(cmd[1]) - 1])
+        else:
+            sys.stdout.write(str(t.query(1, 0, n - 1, int(cmd[1]) - 1, int(cmd[2]) - 1)) + '\n')
+    
 
 
