@@ -17,9 +17,9 @@ class Tree(object):
         """
         self._len = len(_list)
         self._list = [0] * (self._len * 4)
-        self._g_list = _list #+ _list[:1]
-        self.build(0, 0, self._len - 1)
-        #print self._list[1:]
+        self._g_list = _list + _list[:1]
+        self.build(1, 0, self._len - 1)
+        print self._list[1:]
 
     def __len__(self):
         """
@@ -76,22 +76,22 @@ class Tree(object):
             self._g_list[idx] = int(_val)
         else:
             _mid = (_l+_r) / 2
-            if idx >= _l and idx <= _mid:
-                self.update(_ind * 2 , _l, _mid, idx, int(_val))
+            if idx >= _l and idx <= _r:
+                self.update(_ind * 2, _l, _mid, idx, int(_val))
             else:
                 self.update(_ind * 2 + 1, _mid + 1, _r, idx, int(_val))
             self._list[_ind] = self._list[_ind * 2] + self._list[_ind * 2 + 1]
 
     def query(self, _ind, _l, _r, _a, _b):
         if _l > _b or _r < _a:
-            return 0
+            return 0;
         elif _l >= _a and _r <= _b:
-            return self._list[_ind]
+            return self._list[_ind];
         else:
             mid = (_l+_r)/2
             query1 = self.query(_ind * 2, _l, mid, _a, _b)
             query2 = self.query(_ind * 2 + 1, mid + 1, _r, _a, _b)
-            return query1 + query2  # Change this for diffren query
+            return query1 + query2; # Change this for diffren query
 
 if __name__ == "__main__":
     x = list(map(int, sys.stdin.readline().strip('\n').split(' ')))
@@ -101,9 +101,9 @@ if __name__ == "__main__":
     t = Tree(y)
     for i in range(k):
         cmd = list(map(str, sys.stdin.readline().strip('\n').split(' ')))
-        if cmd[0] in ['F', 'f']:
-            #print t.get_original_list[int(cmd[1])]
-            #print int(cmd[1])
+        if cmd[0] == 'F':
+            print t.get_original_list[int(cmd[1])]
+            print int(cmd[1])
             t.update(1, 0, n - 1, int(cmd[1]), not t.get_original_list[int(cmd[1])])
         else:
             sys.stdout.write(str(t.query(1, 0, n - 1, int(cmd[1]), int(cmd[2]))) + '\n')
