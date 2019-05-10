@@ -14,8 +14,6 @@ public:
     void build(int value, int l, int r);
     int query(int ind, int l, int r, int a, int b);
     void update(int ind, int l, int r, int idx, int val);
-
-private:
     int *A;
     STTYPE *iArr;
 };
