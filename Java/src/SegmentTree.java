@@ -1,12 +1,25 @@
+import java.util.Scanner;
+
+
 public class SegmentTree {
-    public static void main(Int[] x, int len){
-        A = x;
-        iArr = new int[len*4-1];
-        build(1,0, len - 1);
-        for (int i = 1; i < len * 4; i++){
+    public static void main(String[] args){
+        int n, k;
+        Scanner sc = new scanner(System.in);
+        int x[n]
+        string next = scanner.nextLine();
+        System.out.println(next);
+        bu(x, n);
+        for (int i = 0; i < k; i++){
 
         }
     }
+
+    private static void bu(Int[] x, int len){
+        A  = x;
+        iArr = new int[len*4];
+        build(1,0, len - 1);
+    }
+
     private static void build(int ind, int l, int r){
         if (l == r){
             iArr[ind] = A[l];
@@ -20,10 +33,11 @@ public class SegmentTree {
 
     private static void update(int ind, int l, int r, int idx, int val){
         if (l == r){
-
+            iArr[ind] = val;
+            A[idx] = val;
         } else {
             int mid = (l + r) / 2;
-            if (idx >= l && idx <= r){
+            if (idx >= l && idx <= mid){
                 update(ind * 2, l, mid, idx, val);
             } else {
                 update(ind * 2 + 1, mid + 1, r, idx, val);
@@ -41,6 +55,7 @@ public class SegmentTree {
         }
         int mid = (l + r) / 2;
         int query1 = query(ind * 2, l, mid, a, b);
-        int query2 = query(ind * 2 + 1, mid, r, a, b);
+        int query2 = query(ind * 2 + 1, mid + 1, r, a, b);
+	return query1 + query2;
     }
 }
