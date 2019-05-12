@@ -9,8 +9,8 @@ public class SegmentTree {
         Scanner sc = new Scanner(System.in);
         String next = sc.nextLine();
 	    String nextLineSplit[] = next.split(" ", 0);
-	    int n = Character.getNumericValue(nextLineSplit[0].charAt(0));
-	    int k = Character.getNumericValue(nextLineSplit[1].charAt(0));
+	    int n = Integer.parseInt(nextLineSplit[0]);
+	    int k = Integer.parseInt(nextLineSplit[1]);
 	    x = new int[n];
         //System.out.println(next);
         bu(x, n);
@@ -21,10 +21,10 @@ public class SegmentTree {
 		    String[] cmdList = command.split(" ", 0);
 		    //System.out.println(cmdList[0].charAt(0) == 'F');
 		    if (cmdList[0].charAt(0) == 'F'){
-			    update(1, 0, n - 1, Character.getNumericValue(cmdList[1].charAt(0)), (x[Character.getNumericValue(cmdList[1].charAt(0))] == 1) ? 0 : 1);
+			    update(1, 0, n - 1, Integer.parseInt(cmdList[1]), (x[Integer.parseInt(cmdList[1])] == 1) ? 0 : 1);
 		    }
 		    else {
-			    System.out.println(query(1, 0, n - 1, Character.getNumericValue(cmdList[1].charAt(0)), Character.getNumericValue(cmdList[2].charAt(0))));
+			    System.out.println(query(1, 0, n - 1, Integer.parseInt(cmdList[1]), Integer.parseInt(cmdList[2])));
 		    }
         }
     }
